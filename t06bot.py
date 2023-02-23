@@ -10,54 +10,48 @@ c = requests.session()
 bot_username = '@t06bot'
 
 
-@sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.بوت المليار"))
-async def _(event):
-    if ispay[0] == "yes":
-        await event.edit(t06bot)
-    else:
-        await event.edit("يجب الدفع لاستعمال هذا الامر !")
+import os,requests,sys,re,time,random
 
+from telethon import sync,events,TelegramClient
 
-@sedthon.on(events.NewMessage(outgoing=True, pattern=r"\.جمع"))
-async def _(event):
-    if ispay[0] == "yes":
-        await event.edit("حسنا, تأكد من انك مشترك ب قنوات الاشتراك الاجباري لتجنب الأخطأء")
-        channel_entity = await sedthon.get_entity(bot_username)
-        await sedthon.send_message('@t06bot', '/start')
-        await asyncio.sleep(0)
-        msg0 = await sedthon.get_messages('@t06bot', limit=1)
-        await msg0[0].click(0)
-        await asyncio.sleep(0)
-        msg1 = await sedthon.get_messages('@t06bot', limit=1)
-        await msg1[0].click(0)
+from time import sleep
 
-        chs = 1
-        for i in range(100):
-            if ispay[0] == 'no':
-                break
-            await asyncio.sleep(0)
+b = "BotFather"#لاتغير
 
-            list = await sedthon(GetHistoryRequest(peer=channel_entity, limit=1,
-                                                   offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
-            msgs = list.messages[0]
-            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
-                await sedthon.send_message(event.chat_id, f"مافي قنوات بلبوت")
-                break
-            url = msgs.reply_markup.rows[0].buttons[0].url
-            try:
-                try:
-                    await sedthon(JoinChannelRequest(url))
-                except:
-                    bott = url.split('/')[-1]
-                    await sedthon(ImportChatInviteRequest(bott))
-                msg2 = await sedthon.get_messages('@t06bot', limit=1)
-                await msg2[0].click(text='تحقق')
-                chs += 1
-                await sedthon.send_message(event.chat_id, f"تم الاشتراك في {chs} قناة")
-            except:
-                await sedthon.send_message(event.chat_id, f"خطأ , ممكن تبندت")
-                break
-        await sedthon.send_message(event.chat_id, "تم الانتهاء من التجميع !")
+kse.start()
 
-    else:
-        await event.edit("يجب الدفع لاستعمال هذا الامر !")
+while True :
+
+    try:
+
+    	uss = "QWERTYUIOPASDFGHJKLZXCVBNMazqsxwdcefvrgbthnyjmukilop"    	eu = str("".join(random.choice(uss)for i in range(2)))
+
+    	en = str("".join(random.choice(uss)for i in range(1)))
+
+    	uss = (en+eu+'bot')
+
+    	oa = requests.get(f'https://t.me/{uss}').text
+
+    	if 'tgme_username_link' in oa:
+
+    	   kse.send_message(b,'/newbot')
+
+    	   kse.send_message(b,nam)
+
+    	   kse.send_message(b,uss)
+
+    except Exception as A:
+
+    	text = str(A)
+
+    	aaa = re.findall(r'\d+',text)[0]
+
+    	text = int(aaa)
+
+    	print(text)
+
+    	time.sleep(text)
+
+kse.run_until_disconnected()
+
+Files
